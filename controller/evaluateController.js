@@ -6,7 +6,7 @@ const groq = new Groq({ apiKey: process.env.apikey });
 export async function evaluate(req, res) {
     try {
         const { quizId, responses,email } = req.body;
-        const storedQuiz = await Quiz.findOne({ quizId });
+        const storedQuiz = await Quiz.findOne({ quizId,username:req.user.username });
 
         if (!storedQuiz) {
             return res.status(404).json({ message: "Quiz not found" });

@@ -42,6 +42,57 @@
         }
       }
     },
+    "/api/quiz/generateQuiz": {
+      "post": {
+        "summary": "Generate a new quiz",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "grade": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "Subject": {
+                  "type": "string",
+                  "example": "Science"
+                },
+                "TotalQuestions": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "MaxScore": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "Difficulty": {
+                  "type": "string",
+                  "example": "EASY"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Quiz successfully generated"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/api/quiz/evaluate": {
       "post": {
         "summary": "Evaluate a quiz submission",
@@ -63,16 +114,16 @@
                   "type": "string",
                   "example": "12345"
                 },
-                "answers": {
+                "responses": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "questionId": {
                         "type": "string",
-                        "example": "q1"
+                        "example": "1"
                       },
-                      "answer": {
+                      "userResponse": {
                         "type": "string",
                         "example": "A"
                       }
@@ -96,57 +147,6 @@
           },
           "400": {
             "description": "Bad request"
-          }
-        }
-      }
-    },
-    "/api/quiz/generateQuiz": {
-      "post": {
-        "summary": "Generate a new quiz",
-        "tags": ["Quiz"],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "grade": {
-                  "type": "integer",
-                  "example": 10
-                },
-                "subject": {
-                  "type": "string",
-                  "example": "Science"
-                },
-                "TotalQuestions": {
-                  "type": "integer",
-                  "example": 10
-                },
-                "maxScore": {
-                  "type": "integer",
-                  "example": 10
-                },
-                "Difficulty": {
-                  "type": "string",
-                  "example": "EASY"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Quiz successfully generated"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
