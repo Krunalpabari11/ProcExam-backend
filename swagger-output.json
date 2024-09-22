@@ -1,0 +1,332 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My API",
+    "description": "API for managing quizzes",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "summary": "Login a User",
+        "tags": ["Auth"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful login"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/quiz/evaluate": {
+      "post": {
+        "summary": "Evaluate a quiz submission",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quizId": {
+                  "type": "string",
+                  "example": "12345"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "questionId": {
+                        "type": "string",
+                        "example": "q1"
+                      },
+                      "answer": {
+                        "type": "string",
+                        "example": "A"
+                      }
+                    }
+                  }
+                },
+                "email": {
+                  "type": "string",
+                  "example": "user@example.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Quiz evaluated successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/api/quiz/generateQuiz": {
+      "post": {
+        "summary": "Generate a new quiz",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "grade": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "subject": {
+                  "type": "string",
+                  "example": "Science"
+                },
+                "TotalQuestions": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "maxScore": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "Difficulty": {
+                  "type": "string",
+                  "example": "EASY"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Quiz successfully generated"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/quiz/filter": {
+      "get": {
+        "summary": "Filter quizzes based on various criteria",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "grade",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Grade level to filter by"
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Subject to filter by"
+          },
+          {
+            "name": "minMarks",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Minimum marks to filter by"
+          },
+          {
+            "name": "completedDateFrom",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "required": false,
+            "description": "Filter quizzes completed after this date"
+          },
+          {
+            "name": "completedDateTo",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "required": false,
+            "description": "Filter quizzes completed before this date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of filtered quizzes"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/quiz/getAllSubmission": {
+      "get": {
+        "summary": "Get all submissions for quizzes of currentUser",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all quiz submissions"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/quiz/{quizId}/allSubmission": {
+      "get": {
+        "summary": "Get all submissions for a specific quiz ID of currentUser",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quizId",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Quiz ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Submissions data for the specified quiz ID"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Quiz not found"
+          }
+        }
+      }
+    },
+    "/api/quiz/{quizId}/retry": {
+      "get": {
+        "summary": "Retry a quiz and get questions data for quiz id",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quizId",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Quiz ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Quiz question data for retry"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Quiz not found"
+          }
+        }
+      }
+    },
+    "/api/quiz/hint/{quizId}/{questionId}": {
+      "get": {
+        "summary": "Get a hint for a specific quiz question",
+        "tags": ["Quiz"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quizId",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Quiz ID"
+          },
+          {
+            "name": "questionId",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Question ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hint for the specified quiz question"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Quiz or question not found"
+          }
+        }
+      }
+    }
+  }
+}
