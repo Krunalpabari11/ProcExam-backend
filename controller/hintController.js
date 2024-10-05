@@ -1,4 +1,4 @@
-import Quiz from '../models/quizModel.js';
+import Quiz from '../models/CompanyExamModel.js';
 import Groq from 'groq-sdk';
 
 const groq = new Groq({ apiKey: process.env.apikey });

@@ -6,7 +6,7 @@ import swaggerDocument from './swagger-output.json'assert { type: 'json' };
 import quizRoute from './Routes/quizRoute.js';
 import authRouter from './Routes/loginRoute.js';
 const app = express();
-// swaggerConfig(app);
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 app.use(cookieParser());

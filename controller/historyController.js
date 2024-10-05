@@ -1,4 +1,4 @@
-import Quiz from "../models/quizModel.js";
+import Quiz from "../models/CompanyExamModel.js";
 import redis from 'redis';
 
 import { redisClient } from "../config/redisConn.js";

@@ -1,8 +1,12 @@
 # My API Documentation
 
+## Hosted At
+
+http:/3.87.159.0/api-docs
+
 ## Overview
 
-This API allows users to authenticate, manage quizzes, and evaluate quiz submissions. It uses JWT tokens for authentication, which are stored securely in cookies. Kafka is implemented for efficient message processing.
+This API allows users to authenticate, manage quizzes, and evaluate quiz submissions. It uses JWT tokens for authentication, which are stored securely in cookies. Redis is implemented for efficient message processing.
 
 ## For Swagger
 
@@ -122,9 +126,9 @@ This API allows users to authenticate, manage quizzes, and evaluate quiz submiss
 
 - JWT tokens are used for authentication and are stored securely in cookies to enhance security against XSS attacks.
 
-## Kafka Implementation
+## Redis Implementation
 
-- Kafka is implemented for caching quizes for better efficiency of the server and faster output.
+- Redis is implemented for caching quizes for better efficiency of the server and faster output.
 
 ## Conclusion
 

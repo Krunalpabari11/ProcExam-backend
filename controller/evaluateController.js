@@ -1,4 +1,4 @@
-import Quiz from "../models/quizModel.js";
+import Quiz from "../models/CompanyExamModel.js";
 import nodemailer from 'nodemailer';
 import Groq from "groq-sdk";
 

@@ -1,4 +1,4 @@
-import Quiz from "../models/quizModel.js";
+import Quiz from "../models/CompanyExamModel.js";
 
 export async function filteration(req, res) {
     const { grade, subject, minMarks, maxMarks, completedDateFrom, completedDateTo } = req.query;
