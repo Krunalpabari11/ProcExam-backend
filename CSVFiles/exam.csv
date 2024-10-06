@@ -1,0 +1,14 @@
+id,question,option a,option b,option c,option d,right answer
+1,What is the time complexity of binary search?,O(n),O(n log n),O(log n),O(n^2),O(log n)
+2,Which data structure is used in a depth-first search (DFS)?,Queue,Stack,Linked List,Tree,Stack
+3,Which of the following is a self-balancing binary search tree?,AVL Tree,Hash Table,Graph,Binary Heap,AVL Tree
+4,What is the main purpose of an operating system?,To compile programs,To manage computer resources,To connect to the internet,To execute JavaScript,To manage computer resources
+5,Which of the following is not a type of scheduling algorithm?,Round Robin,FIFO,Shortest Job Next,Stack Scheduling,Stack Scheduling
+6,What is a critical section in operating systems?,A section where data is processed,A section of code where shared resources are accessed,A section of the disk,A type of CPU scheduling algorithm,A section of code where shared resources are accessed
+7,Which layer of the OSI model is responsible for routing data between devices?,Physical Layer,Data Link Layer,Network Layer,Application Layer,Network Layer
+8,Which protocol is connection-oriented and ensures data delivery?,UDP,IP,TCP,HTTP,TCP
+9,What is the purpose of a subnet mask?,To identify network devices,To define the network and host portions of an IP address,To encrypt data,To translate domain names to IP addresses,To define the network and host portions of an IP address
+10,What is a primary key?,A key that uniquely identifies each row in a table,A key used for data encryption,A key used to establish a relationship between tables,A key that allows duplicate values,A key that uniquely identifies each row in a table
+11,Which SQL command is used to remove a table from the database?,DELETE,DROP,REMOVE,TRUNCATE,DROP
+12,What is the output of `console.log(typeof null)` in JavaScript?,undefined,null,object,string,object
+13,Which of the following is a dynamically-typed language?,C++,Java,Python,C,Python
