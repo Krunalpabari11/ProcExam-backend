@@ -44,7 +44,7 @@ export async function generate(req, res) {
 
   const quizId = new mongoose.Types.ObjectId();
 
-  const eligibleStudentIds = eligibleStudents.map(student => new mongoose.Types.ObjectId(student));
+  // const eligibleStudentIds = eligibleStudents.map(student => new mongoose.Types.ObjectId(student));
 
   try {
     const exam = {
@@ -63,7 +63,7 @@ export async function generate(req, res) {
         options: q.options,
         correct_answer: q.answer
       })),
-      eligibleStudents: eligibleStudentIds,
+      // eligibleStudents: eligibleStudentIds,
     };
 
     const updatedCompany = await Company.findOneAndUpdate(
@@ -94,7 +94,7 @@ export async function getGroqChatCompletion(
   { "id":autoincrement start from 1
     "question": "string",
     "options": ["option1", "option2", "option3", "option4"],
-    "answer": "correct option"
+    "answer": "correct answer"
   }.
   Ensure Difficulty level is set to ${Difficulty}. Maximum score: ${MaxScore}.`;
 
