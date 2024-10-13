@@ -11,11 +11,11 @@ export async function evaluate(req, res) {
 
         // Check if the student has already taken this quiz
         const student = await Student.findOne({ _id: req.user.id });
-        const alreadyTaken = student.exams_given.some(exam => exam.quiz_id.toString() === quizId);
+        // const alreadyTaken = student.exams_given.some(exam => exam.quiz_id.toString() === quizId);
 
-        if (alreadyTaken) {
-            return res.status(400).json({ message: "You have already taken this quiz." });
-        }
+        // if (alreadyTaken) {
+        //     return res.status(400).json({ message: "You have already taken this quiz." });
+        // }
 
         // Find the company and quiz
         const storedCompany = await Company.findOne({ 'exams.quiz_id': quizId });
