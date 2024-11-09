@@ -55,7 +55,8 @@ export async function companyLogin(req,res){
         );
         res.cookie('token', token, {
             httpOnly: true, 
-            secure: process.env.NODE_ENV === 'production', 
+            secure:false,
+            sameSite:"None",
             maxAge: 3600000*6 
         });
         res.status(200).json({ message: 'Login successful', token }); 
