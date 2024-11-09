@@ -5,7 +5,15 @@ import cookieParser from 'cookie-parser';
 import swaggerUi from 'swagger-ui-express';
 import authRouter from './Routes/loginRoute.js';
 import quizRoute from './Routes/quizRoute.js';
+import cors from 'cors'
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000',  // Specify your frontend origin
+  credentials: true,                // Allow credentials
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 DBConnect();
