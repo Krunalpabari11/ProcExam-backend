@@ -21,7 +21,7 @@ const sendEmail = (email, examId) => {
     from: process.env.EMAIL_USER,
     to: email,
     subject: 'Invitation for Assessment',
-    text: `Your Exam ID is: ${examId}`,
+    text: `Your Exam ID is: ${examId} \n Please login and Create your account here /n http://localhost:3000/createPassword?email=${email}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

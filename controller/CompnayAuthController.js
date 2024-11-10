@@ -53,6 +53,7 @@ export async function companyLogin(req,res){
             { id: company._id, name: company.name },
             process.env.JWT_SECRET,
         );
+
         res.cookie('token', token, {
             httpOnly: true, 
             secure:false,
