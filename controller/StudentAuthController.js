@@ -63,3 +63,23 @@ export async function studentLogin(req,res){
     }
 }
 
+export async function updatePassword(req,res)
+{
+    const { email, password } = req.body;
+    try {
+        const student = await Student.findOneAndUpdate(
+          {email},
+          {password:await bcrypt.hash(password, 10)},
+          {new:true}
+        )
+        if (!student) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+        res.status(200).json({ message: 'Password updated successfully' });
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+  
+} 
+
