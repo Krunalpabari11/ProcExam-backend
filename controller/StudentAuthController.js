@@ -22,7 +22,7 @@ export async function studentRegister(req, res) {
       await student.save();
   
       const token = jwt.sign(
-        { id: student._id, name: student.name },
+        { id: student._id, name: student.name,role:"student" },
         process.env.JWT_SECRET
       );
   
@@ -44,12 +44,10 @@ export async function studentLogin(req,res){
         if (!isPasswordCorrect) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
-        console.log(isPasswordCorrect)
         const token = jwt.sign(
-            { id: student._id, name: student.name },
+            { id: student._id, name: student.name,email:email,role:"student" },
             process.env.JWT_SECRET,
         );
-
         res.cookie('token', token, {
             httpOnly: true, 
             secure:false,

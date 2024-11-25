@@ -22,9 +22,11 @@ export async function companyRegister(req, res) {
         await company.save();
 
         const token = jwt.sign(
-            { id: company._id, name: name },
+            { id: company._id, name: name,role:"company" },
             process.env.JWT_SECRET ,
         );
+
+        console.log(token+"company backend")
         res.cookie('token', token, {
             httpOnly: true, 
             secure: process.env.NODE_ENV === 'production', 
@@ -50,7 +52,7 @@ export async function companyLogin(req,res){
             return res.status(400).json({ message: 'Invalid credentials' });
         }
         const token = jwt.sign(
-            { id: company._id, name: company.name },
+            { id: company._id, name: company.name,role:"company" },
             process.env.JWT_SECRET,
         );
 
